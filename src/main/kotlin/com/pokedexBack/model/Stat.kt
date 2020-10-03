@@ -1,4 +1,6 @@
 package com.pokedexBack.model
 
-class Stat {
-}
+data class Stat (
+    val name: String,
+    val value: Long
+)

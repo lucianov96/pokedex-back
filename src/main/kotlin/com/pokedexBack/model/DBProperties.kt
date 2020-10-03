@@ -1,4 +1,4 @@
-package com.birras.model
+package com.pokedexBack.model
 
 data class DBProperties(
     val host: String,

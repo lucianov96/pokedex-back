@@ -1,11 +1,10 @@
 package com.pokedexBack.dao
 
-import com.birras.model.DBProperties
 import com.pokedexBack.model.DBProperties
 import java.io.FileNotFoundException
 import java.util.*
 
-open class PokemonDAO {
+open class BaseDAO {
     val DB_CONNECTION by lazy { getConnection() }
 
     private fun getConnection(): String {
