@@ -6,14 +6,14 @@ import com.pokedexBack.model.Stat
 class PokemonBaseResponse private constructor(
     val id: Long,
     val name: String,
-    val abilities : List<String>,
+    val abilities: List<String>,
     val types: List<String>,
     val stats: List<Stat>
 ) {
     data class Builder(
         private var id: Long? = null,
         private var name: String? = null,
-        private var abilities : List<String>? = null,
+        private var abilities: List<String>? = null,
         private var types: List<String>? = null,
         private var stats: List<Stat>? = null
     ) {
@@ -39,13 +39,13 @@ class PokemonBaseResponse private constructor(
 
         private fun buildAbilities(pokemon: Pokemon): List<String> {
             val list = mutableListOf(pokemon.ability1)
-            if (pokemon.ability2!=null) list.add(pokemon.ability2)
+            if (pokemon.ability2 != null) list.add(pokemon.ability2)
             return list
         }
 
         private fun buildTypes(pokemon: Pokemon): List<String> {
             val list = mutableListOf(pokemon.type1)
-            if (pokemon.type2!=null) list.add(pokemon.type2)
+            if (pokemon.type2 != null) list.add(pokemon.type2)
             return list
         }
     }
