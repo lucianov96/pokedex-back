@@ -24,6 +24,12 @@ class Router {
 
         path("pokemon/:id") {
             get(pokemonController::getPokemon, toJson())
+            path("/catch") {
+                get(pokemonController::getPokemonCatchWays, toJson())
+            }
+            path("/movements") {
+                get(pokemonController::getPokemonMovements, toJson())
+            }
         }
 
         get("ping") { _, _ ->
