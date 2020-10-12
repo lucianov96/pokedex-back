@@ -4,9 +4,7 @@ import com.google.inject.Inject
 import com.pokedexBack.dao.PokemonCatchWayDAO
 import com.pokedexBack.dao.PokemonDAO
 import com.pokedexBack.dao.PokemonMovementDAO
-import com.pokedexBack.model.Movement
-import com.pokedexBack.model.Pokemon
-import com.pokedexBack.model.PokemonCatchWay
+import com.pokedexBack.model.*
 
 class PokemonService @Inject constructor(
     private val pokemonDAO: PokemonDAO,
@@ -23,5 +21,13 @@ class PokemonService @Inject constructor(
 
     fun getPokemonMovements(id: Long): List<Movement> {
         return pokemonMovementDAO.getPokemonMovements(id)
+    }
+
+    fun getPokemonList(): List<MainPokemon> {
+        return pokemonDAO.getPokemonList()
+    }
+
+    fun getPokemonFilteredList(queryConditions: List<QueryParam>): List<MainPokemon> {
+        return pokemonDAO.getPokemonFilteredList(queryConditions)
     }
 }

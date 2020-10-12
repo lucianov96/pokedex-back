@@ -33,8 +33,12 @@ open class Controller(
         return parsed
     }
 
-    fun getParamFromRequest(param: String, request: Request): Long {
+    fun getLongParamFromRequest(param: String, request: Request): Long {
         return request.params().getOrDefault(param, "0").toLong()
+    }
+
+    fun getStringParamFromRequest(param: String, request: Request): String {
+        return request.queryParamOrDefault(param, "?")
     }
 
     private fun getExceptionParameter(e: JsonMappingException): String =

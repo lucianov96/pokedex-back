@@ -1,11 +1,20 @@
 package com.pokedexBack.dao
 
 import com.pokedexBack.model.DBProperties
+import com.pokedexBack.model.QueryParam
 import java.io.FileNotFoundException
 import java.util.*
 
 open class BaseDAO {
     val DB_CONNECTION by lazy { getConnection() }
+
+    protected fun buildDynamicQueryCondition(conditions: List<QueryParam>): String {
+        var dynamicQueryCondition: String = ""
+        conditions.forEach{
+            dynamicQueryCondition += " AND " + it.field + " " + it.condition + " " + it.value
+        }
+        return dynamicQueryCondition.replaceFirst(" AND ", "")
+    }
 
     private fun getConnection(): String {
         val properties = getProperties()

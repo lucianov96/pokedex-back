@@ -22,13 +22,21 @@ class Router {
 
         port(80)
 
-        path("pokemon/:id") {
-            get(pokemonController::getPokemon, toJson())
-            path("/catch") {
-                get(pokemonController::getPokemonCatchWays, toJson())
+        path("pokemon") {
+            path("/list") {
+                get(pokemonController::getPokemonList, toJson())
+                path("/filter") {
+                    get(pokemonController::getPokemonFilteredList, toJson())
+                }
             }
-            path("/movements") {
-                get(pokemonController::getPokemonMovements, toJson())
+            path("/:id") {
+                get(pokemonController::getPokemon, toJson())
+                path("/catch") {
+                    get(pokemonController::getPokemonCatchWays, toJson())
+                }
+                path("/movements") {
+                    get(pokemonController::getPokemonMovements, toJson())
+                }
             }
         }
 
