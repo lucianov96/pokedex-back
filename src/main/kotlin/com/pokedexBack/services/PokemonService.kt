@@ -1,6 +1,7 @@
 package com.pokedexBack.services
 
 import com.google.inject.Inject
+import com.luriam.exceptions.BadRequestException
 import com.pokedexBack.dao.PokemonCatchWayDAO
 import com.pokedexBack.dao.PokemonDAO
 import com.pokedexBack.dao.PokemonMovementDAO
@@ -28,6 +29,10 @@ class PokemonService @Inject constructor(
     }
 
     fun getPokemonFilteredList(queryConditions: List<QueryParam>): List<MainPokemon> {
-        return pokemonDAO.getPokemonFilteredList(queryConditions)
+        return if (!queryConditions.isEmpty()) {
+            pokemonDAO.getPokemonFilteredList(queryConditions)
+        } else {
+            throw BadRequestException("No filters specified to search Pokemons")
+        }
     }
 }

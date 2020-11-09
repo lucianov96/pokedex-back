@@ -11,7 +11,11 @@ open class BaseDAO {
     protected fun buildDynamicQueryCondition(conditions: List<QueryParam>): String {
         var dynamicQueryCondition: String = ""
         conditions.forEach{
-            dynamicQueryCondition += " AND " + it.field + " " + it.condition + " " + it.value
+            dynamicQueryCondition += if(it.value.toIntOrNull() == null){
+                " AND " + it.field + " " + it.condition + " \"" + it.value + "\""
+            } else {
+                " AND " + it.field + " " + it.condition + " " + it.value
+            }
         }
         return dynamicQueryCondition.replaceFirst(" AND ", "")
     }
